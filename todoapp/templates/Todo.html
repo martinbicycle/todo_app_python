@@ -5,6 +5,9 @@
   {% for task in todo_items %}
     <li>
       {{task.content}}
+      <form action="/delete/{{task.id}}" method="POST">{% csrf_token %}
+        <button type="submit" value="delete">削除</button>
+      </form>
     </li>
   {% endfor %} 
 </ul>
@@ -13,5 +16,5 @@
 <!-- 入力フォーム -->
 <form action="todo_post/" method="POST">{% csrf_token %}
   <input type="text" name="content"/>
-  <input type="submit" name="送信"/>
+  <button type="submit" value="add">送信</button>
 </form>

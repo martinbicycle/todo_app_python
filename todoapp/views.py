@@ -17,3 +17,10 @@ def todo_post(request):
     todo_task = Todo(content=request.POST['content'])
     todo_task.save()
     return HttpResponseRedirect('/todo/')
+
+
+# 削除
+def todo_delete(request, task_id):
+    delete_task = Todo.objects.get(id=task_id)
+    delete_task.delete()
+    return HttpResponseRedirect('/todo/')
